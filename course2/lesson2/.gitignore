@@ -1,0 +1,13 @@
+tmp/cats-v-dogs/testing/cats/*
+tmp/cats-v-dogs/testing/dogs/*
+tmp/cats-v-dogs/training/dogs/*
+tmp/cats-v-dogs/training/cats/*
+tmp/files/*
+
+*.zip
+
+venv
+
+downloads
+
+files
