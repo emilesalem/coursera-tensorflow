@@ -2,6 +2,9 @@ import tensorflow as tf
 from tensorflow.keras.optimizers import RMSprop
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import matplotlib.pyplot as plt
+import numpy as np 
+from tensorflow.keras.preprocessing import image
+
 
 model = tf.keras.models.Sequential([
     # Note the input shape is the desired size of the image 300x300 with 3 bytes color
@@ -63,30 +66,37 @@ validation_generator = validation_datagen.flow_from_directory(
 
 history = model.fit(
       train_generator,
-      steps_per_epoch=3,  
-      epochs=5,
+      steps_per_epoch=8,  
+      epochs=50,
       verbose=1,
       validation_data = validation_generator,
       validation_steps=8)
 
+model.save('model/model1')
+
+# img_width, img_height = 300, 300
+# img = image.load_img('files/validation/humans/valhuman01-01.png', target_size = (img_width, img_height))
+# img = image.img_to_array(img)
+# img = np.expand_dims(img, axis = 0)
 
 
-acc = history.history['accuracy']
-val_acc = history.history['val_accuracy']
-loss = history.history['loss']
-val_loss = history.history['val_loss']
+# acc = history.history['accuracy']
+# val_acc = history.history['val_accuracy']
+# loss = history.history['loss']
+# val_loss = history.history['val_loss']
 
-epochs = range(len(acc))
+# epochs = range(len(acc))
 
-plt.plot(epochs, acc, 'r', label='Training accuracy')
-plt.plot(epochs, val_acc, 'b', label='Validation accuracy')
-plt.title('Training and validation accuracy')
+# plt.plot(epochs, acc, 'r', label='Training accuracy')
+# plt.plot(epochs, val_acc, 'b', label='Validation accuracy')
+# plt.title('Training and validation accuracy')
 
-plt.figure()
+# plt.figure()
 
-plt.plot(epochs, loss, 'r', label='Training Loss')
-plt.plot(epochs, val_loss, 'b', label='Validation Loss')
-plt.title('Training and validation loss')
-plt.legend()
+# plt.plot(epochs, loss, 'r', label='Training Loss')
+# plt.plot(epochs, val_loss, 'b', label='Validation Loss')
+# plt.title('Training and validation loss')
+# plt.legend()
 
-plt.show()
+# plt.show()
+
